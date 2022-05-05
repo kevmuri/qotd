@@ -43,13 +43,10 @@ async def question_post(channel):
         qlines = questions.read().splitlines()
         try:
             qotd = random.choice(qlines)
-            if qotd != "":
-                await channel.send('QOTD: '+ qotd)
-                remove_question(qotd)
-            else:
-                await channel.send("No questions left. Everyone submit one!")
-        except Exception as e:
-            print(e)
+            await channel.send('QOTD: '+ qotd)
+            remove_question(qotd)
+        except:
+            await channel.send("No questions left. Everyone submit one!")
     print(f'{client.user} has posted a qotd!')
 
 #Scheduled to call question of the day.
